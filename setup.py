@@ -7,5 +7,6 @@ setup(
     long_description=open('README.md').read(),
     author='Harper Grimsley',
     description='Specialized Psi4 OpenFermion Chemistry Kit',
+    install_requires = open('requirements.txt', 'r').readlines()
 )
 
