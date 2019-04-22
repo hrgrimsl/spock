@@ -1,4 +1,4 @@
-# SPOCK - Specialized Openfermion Psi4 Chemistry Kit
+# SPOCK - Specialized Psi4 Openfermion Chemistry Kit
 ## To Do
 -Take basis set, geometry, frozen orbitals from user
 
