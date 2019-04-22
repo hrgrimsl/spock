@@ -17,4 +17,6 @@
 ##Feature Requests
 -Fix active space issue present in OFPsi4.  We need orbital reordering
 
+-Enable orbital localization.  OFPsi4 is awful at this
+
 -Avoid the process of using psi4 executables.  Writing these instead of using the python API is ugly and inefficient
