@@ -1,9 +1,9 @@
-from distutils.core import setup
+from setup_tools import setup, find_packages
 
 setup(
     name='SPOCK',
     version='0.1',
-    url='https://github.com/hrgrimsl/spock',
+    packages = find_packages(),
     long_description=open('README.md').read(),
     author='Harper Grimsley',
     description='Specialized Psi4 OpenFermion Chemistry Kit',
