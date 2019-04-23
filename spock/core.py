@@ -8,11 +8,10 @@ class molecule:
                 setattr(self, key, kwargs[key])
     
     def get_psi_geom(self):
-        self.psi_geom = ""
+        self.psi_geom = '\n'
         self.psi_geom += str(self.charge) + ' ' +str(self.multiplicity) + '\n'
         for atom in self.geometry:
             self.psi_geom += atom[0] + ' ' + str(atom[1][0]) + ' ' + str(atom[1][1]) + ' ' + str(atom[1][2]) + '\n'
-        print(self.psi_geom)
         
     def scf(self):
         psi4.set_memory('1 GB') 
