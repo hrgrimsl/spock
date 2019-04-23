@@ -123,5 +123,5 @@ dmypy.json
 .pyre/
 
 #other
-**timer
-**swp
+timer.dat
+*swp*
