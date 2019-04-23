@@ -15,6 +15,7 @@
 -Tell OFPsi4 to use this Psi4 data for its molecule object
 
 -Add PySCF options
+
 ##Feature Requests
 -Fix active space issue present in OFPsi4.  We need orbital reordering
 
