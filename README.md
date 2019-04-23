@@ -16,6 +16,10 @@
 
 -Add PySCF options
 
+-Add unit tests
+
+-Add behavior tests
+
 ##Feature Requests
 -Fix active space issue present in OFPsi4.  We need orbital reordering
 
