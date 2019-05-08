@@ -125,3 +125,4 @@ dmypy.json
 #other
 timer.dat
 *swp*
+*log*
