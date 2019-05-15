@@ -23,30 +23,39 @@ geometry- OpenFermion-style geometry nested tuple, e.g. (('H',(0,0,0)),('H',(0,0
 
 multiplicity- int, multiplicity of the molecule.  (2S+1 if S is the number of unpaired spins.)  This affects S^2, not necessarily S_z.
 
-active- comma-separated string, e.g. 0,1,2,3,4,5.  Spatial orbitals you want to be active after rotations, etc.  e.g. if you want to swap the 3rd and 6th orbitals, and measure the new 3rd orbital, you include 3 in this string, not 6.
+active- list, e.g. [0,1,2,3,4,5].  Spatial orbitals you want to be active after rotations, etc.  e.g. if you want to swap the 3rd and 6th orbitals, and measure the new 3rd orbital, you include 3 in this string, not 6.
 
-reorder- comma-separated string, original orbitals you want to put in your active space, in the order you want them in.  The mo coefficients corresponding to active will be swapped with these 1 for 1.
+reorder- list, original orbitals you want to put in your active space, in the order you want them in.  The mo coefficients corresponding to active will be swapped with these 1 for 1.
 
-output- string, specifies to save the psi4 calculation to {output}.hdf5.  If {output}.hdf5 already exists, that psi4 calculation will be loaded and run instead.
+output- string, specifies the .dat psi4 file to be written to, as well as the molden file.  
 
 n_fdoccs- Number of frozen occupied orbitals.
 
-occ- comma-separated string, specifies reference state by spin-orbital occupation.  Alphas are even, betas are odd.  This is how you control S_z for a given S^2.
+occ- list, specifies reference state by spin-orbital occupation.  Alphas are even, betas are odd.  This is how you control S_z for a given S^2.
 
 loc- string- True or False, do localize MO's in active space? 
 
 ## Data Files Generated
 In addition to the actual molecule object, two files will be left in your working directory:
 
-scr.molden- Molden file of the molecular orbitals.  Visualize with jmol.
+{output}.molden - Molden file of the molecular orbitals.  Visualize with jmol.
 
-{output}.hdf5- hdf5 file containing psi4 calculations as well as all necessary input specifications for a molecule.  See OpenFermion for examples of loading from this.
+{output}.dat- Psi4 output file.
 
-
-## To Do:
--Automate a test suite
-
-## To Maybe Do:
+## Thoughts:
 -Simplify orbital specification
 
 -Add PySCF options
+
+##
+See Also:
+
+OpenFermionPsi4 - A very similar code to this which I felt was not generally appropriate for chemists, hence the design of this code.  Given their time investment and resources, their program is much nicer than this if you're not trying to do something outside of its wheelhouse.
+
+OpenFermion - I don't know why you're using this if you don't know what OpenFermion is.
+
+Psi4 - Quantum chemistry program which this acts as a wrapper for.  Free, god-tier API, and versatile.  You should donate to its devs!
+
+JMOL - Quantum chemistry visualizer in the vein of Avagadro, VMD, etc.  Useful for visual checks that your mo's are what you want them to be.
+
+

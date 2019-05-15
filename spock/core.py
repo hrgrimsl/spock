@@ -36,23 +36,17 @@ class molecule:
         self.psi_geom += 'symmetry c1'
     
     def run_psi4(self):
-        psi4.core.set_output_file(self.output, False)
+        psi4.core.set_output_file(self.output+'.dat')
         psi4.set_memory('1 GB') 
         psi_molecule = psi4.geometry(self.psi_geom)
-        psi4.set_options({'basis': self.basis, 'molden_write': True, 'WRITER_FILE_LABEL': 'pre-rotation'})
+        psi4.set_options({'basis': self.basis, 'molden_write': False, 'WRITER_FILE_LABEL': str(self.output)+'.dat'})
         if self.multiplicity !=1:
             psi4.set_options({'reference': 'ROHF'})
-        try:
-            os.system('rm pre-rotation*')
-        except:
-            pass
+
         e, wfn = psi4.energy('scf', return_wfn = True)
         self.molecule.hf_energy = e
-        print("HF energy: ".ljust(20)+"%20.16f" % (e)) 
-        try:
-            os.system('rm scr*')
-        except:
-            pass
+        if os.path.exists('./scr.molden'):
+            os.system('rm scr.molden')
 
         if self.active!=None:
             cb = wfn.Cb().to_array()
@@ -61,7 +55,6 @@ class molecule:
             ca[:,self.active+self.reorder]=ca[:,self.reorder+self.active]
             cb[:,self.active+self.reorder]=cb[:,self.reorder+self.active]
             if self.loc == 'True':
-                print("Localizing frontier orbitals.")
                 acs = psi4.core.Matrix('null')
                 acs = acs.from_array(ca[:,self.active])
                 Local = psi4.core.Localizer.build("BOYS", wfn.basisset(), acs)
@@ -139,6 +132,6 @@ if __name__ == '__main__':
     molecule = molecule(geometry = GEOMETRY, basis = BASIS, charge = CHARGE, multiplicity = MULTIPLICITY, active = ACTIVE, reorder = REORDER, n_fdoccs = N_FDOCCS, output = OUTPUT)
     molecule.get_psi_geom()
     molecule.run_psi4()
-
+    
 
      
