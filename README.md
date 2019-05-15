@@ -53,8 +53,7 @@ In addition to the actual molecule object, two files will be left in your workin
 
 -Add PySCF options
 
-##
-See Also:
+## See Also:
 
 OpenFermionPsi4 - A very similar code to this which I felt was not generally appropriate for chemists, hence the design of this code.  Given their time investment and resources, their program is much nicer than this if you're not trying to do something outside of its wheelhouse.
 
