@@ -1,2 +1,6 @@
+import sys
+
+
 def test_import():
-    from ../spock import core
+    sys.path.append('..')
+    from spock import core
