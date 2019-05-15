@@ -29,6 +29,8 @@ reorder- comma-separated string, original orbitals you want to put in your activ
 
 output- string, specifies to save the psi4 calculation to {output}.hdf5.  If {output}.hdf5 already exists, that psi4 calculation will be loaded and run instead.
 
+n_fdoccs- Number of frozen occupied orbitals.
+
 occ- comma-separated string, specifies reference state by spin-orbital occupation.  Alphas are even, betas are odd.  This is how you control S_z for a given S^2.
 
 loc- string- True or False, do localize MO's in active space? 
