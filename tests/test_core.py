@@ -6,5 +6,5 @@ def test_import():
     os.system('ls')
     from spock import core
     core()
-    
+        
 
