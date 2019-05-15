@@ -1,3 +1,2 @@
-
 def test_import():
-    from spock import core
+    from ../spock import core
