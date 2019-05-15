@@ -6,7 +6,6 @@ certifi==2019.3.9
 cffi==1.12.2
 chardet==3.0.4
 conda==4.3.16
-cryptography==2.6.1
 decorator==4.4.0
 deepdiff==3.3.0
 idna==2.8
