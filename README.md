@@ -1,28 +1,26 @@
 # SPOCK - Specialized Psi4 Openfermion Chemistry Kit
-## To Do
--Take basis set, geometry, frozen orbitals from user
+##Installation:  
+###Linux/Mac/ARC:
+Install with
 
--Get integrals, MO coefficients from Psi4 SCF calculation
+git clone https://github.com/hrgrimsl/spock.git
 
--Reorder MO coefficients so that frozen orbitals at top or bottom
+Then edit ~/.bashrc to include the line
 
--Redo SCF calculation with frozen core/virtuals
+export PYTHONPATH="${PYTHONPATH}:/home/hrgrimsl/spock"
 
--Run FCI calculation with frozen core/virtuals
+###Windows:
+Use Linux like an adult.
 
--Serialize Psi4 data to hdf5
 
--Tell OFPsi4 to use this Psi4 data for its molecule object
 
+##To Do:
 -Add PySCF options
 
--Add unit tests
+-Automate a test suite
 
--Add behavior tests
+-Automate installation
 
-##Feature Requests
--Fix active space issue present in OFPsi4.  We need orbital reordering
+-Introduce better control over saving more than the most recent intermediate calculations.
 
--Enable orbital localization.  OFPsi4 is awful at this
-
--Avoid the process of using psi4 executables.  Writing these instead of using the python API is ugly and inefficient
+-Spice up the log file to be more verbose and not just a data column?
