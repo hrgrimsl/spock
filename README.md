@@ -9,6 +9,12 @@ Then edit ~/.bashrc to include the line
 
 export PYTHONPATH="${PYTHONPATH}:/home/(path to)/spock"
 
+Test by going to spock/tests and running
+
+python core_test.py
+
+See the test file for usage references.
+
 ### Windows:
 Use Linux like an adult.
 
