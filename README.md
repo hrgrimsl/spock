@@ -46,9 +46,6 @@ scr.molden- Molden file of the molecular orbitals.  Visualize with jmol.
 ## To Do:
 -Automate a test suite
 
--Automate installation
-
-
 ## To Maybe Do:
 -Simplify orbital specification
 
