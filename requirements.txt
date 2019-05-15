@@ -20,7 +20,7 @@ pluggy==0.9.0
 py==1.8.0
 pycosat==0.6.3
 pycparser==2.19
-pydantic==0.23
+
 pyOpenSSL==19.0.0
 PySocks==1.6.8
 pytest==4.4.1
