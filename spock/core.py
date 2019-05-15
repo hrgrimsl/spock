@@ -20,13 +20,14 @@ class molecule:
  'configuration',
  'n_fdoccs',
  'output',
- 'loc'):
+ 'loc',
+ 'occ'):
             if key in kwargs:
                 setattr(self, key, kwargs[key])
         self.get_psi_geom()
         self.molecule = openfermion.hamiltonians.MolecularData(self.geometry, self.basis, self.multiplicity, self.charge)
-
         self.molecule.active = self.active 
+        self.molecule.occ = self.occ
     def get_psi_geom(self):
 
         self.psi_geom = '\n'
@@ -85,33 +86,32 @@ class molecule:
             wfn.Cb().copy(cb)                     
             wfn.Ca().copy(ca)
             psi4.molden(wfn, 'scr.molden')
-            psi4.set_options({'frozen_docc': [self.n_fdoccs], 'dmrg_molden_write': True, 'WRITER_FILE_LABEL': 'scr'})
+            psi4.set_options({'frozen_docc': [self.n_fdoccs]})
             self.n_fnoccs = self.molecule.n_orbitals-self.n_fdoccs-len(self.active)
-            psi4.set_options({'frozen_uocc': [self.n_fnoccs], 'mp_type': 'df'})
-            print('Frozen occupied:'.ljust(20)+str(self.n_fdoccs))
-            print('Frozen virtuals:'.ljust(20)+str(self.n_fnoccs))
-            print('Active orbitals:'.ljust(20)+str(self.active))
+            psi4.set_options({'frozen_uocc': [self.n_fnoccs]})
+            print('Frozen occupied orbitals:'.ljust(50)+str(self.n_fdoccs))
+            print('Frozen virtual orbitals:'.ljust(50)+str(self.n_fnoccs))
+            print('Active orbitals:'.ljust(50)+str(self.active))
             self.CASCI = psi4.energy('fci', ref_wfn = wfn)
             self.molecule.CASCI = self.CASCI
             self.fci_energy = self.CASCI
             self.molecule.fci_energy = self.CASCI
             print("CASCI energy: ".ljust(20)+"%20.16f" %(self.CASCI))
             
-
         else:
             self.molecule.n_orbitals = len(wfn.Ca().to_array())
-
             psi4.molden(wfn, 'scr.molden')
 
         self.molecule.nuclear_repulsion = psi_molecule.nuclear_repulsion_energy()
         self.molecule.canonical_orbitals = np.asarray(wfn.Ca())
         if self.active == None:
             self.active = [i for i in range(0, self.molecule.n_orbitals)]
+
         self.molecule.overlap_integrals = np.asarray(wfn.S())
         self.molecule.n_qubits = 2 * self.molecule.n_orbitals        
         self.molecule.orbital_energies = np.asarray(wfn.epsilon_a())
         self.molecule.fock_matrix = np.asarray(wfn.Fa())
-        
+
         mints = psi4.core.MintsHelper(wfn.basisset())
         self.molecule.one_body_integrals = general_basis_change(
             np.asarray(mints.ao_kinetic()), self.molecule.canonical_orbitals, (1, 0))
@@ -134,6 +134,7 @@ class molecule:
             self.molecule.n_qubits = 2*self.molecule.n_orbitals
         self.molecule.n_fdoccs = self.n_fdoccs
         self.molecule.hamiltonian = self.molecule.get_molecular_hamiltonian(occupied_indices = doccs, active_indices = self.active)
+        
         self.molecule.save()
         
         return self.molecule
