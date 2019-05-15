@@ -44,12 +44,12 @@ scr.molden- Molden file of the molecular orbitals.  Visualize with jmol.
 
 
 ## To Do:
--Add PySCF options
-
 -Automate a test suite
 
 -Automate installation
 
--Simplify orbital specification?
 
+## To Maybe Do:
+-Simplify orbital specification
 
+-Add PySCF options
