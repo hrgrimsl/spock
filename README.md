@@ -1,24 +1,48 @@
 # SPOCK - Specialized Psi4 Openfermion Chemistry Kit
-## To Do
--Take basis set, geometry, frozen orbitals from user
+## Installation:  
+### Linux/Mac/ARC:
+Install with
 
--Get integrals, MO coefficients from Psi4 SCF calculation
+git clone https://github.com/hrgrimsl/spock.git
 
--Reorder MO coefficients so that frozen orbitals at top or bottom
+Then edit ~/.bashrc to include the line
 
--Redo SCF calculation with frozen core/virtuals
+export PYTHONPATH="${PYTHONPATH}:/home/(path to)/spock"
 
--Run FCI calculation with frozen core/virtuals
+### Windows:
+Use Linux like an adult.
 
--Serialize Psi4 data to hdf5
+## Usage:
+Creates an OpenFermion molecule object with properties according to the following kwargs:
 
--Tell OFPsi4 to use this Psi4 data for its molecule object
+basis- string, basis set to be used; must be a Psi4 standard, e.g. sto-3g, ccpvdz, 6-31g*, etc.  Case-insensitive.
 
+charge- int, charge of the molecule.
+
+multiplicity- int, multiplicity of the molecule.  (2S+1 if S is the number of unpaired spins.)  This affects S^2, not necessarily S_z.
+
+active- comma-separated string, e.g. 0,1,2,3,4,5.  Spatial orbitals you want to be active after rotations, etc.  e.g. if you want to swap the 3rd and 6th orbitals, and measure the new 3rd orbital, you include 3 in this string, not 6.
+
+reorder- comma-separated string, original orbitals you want to put in your active space, in the order you want them in.  The mo coefficients corresponding to active will be swapped with these 1 for 1.
+
+occ- comma-separated string, specifies reference state by spin-orbital occupation.  Alphas are even, betas are odd.  This is how you control S_z for a given S^2.
+
+loc- string- True or False, do localize MO's in active space? 
+
+
+## To Do:
 -Add PySCF options
 
-##Feature Requests
--Fix active space issue present in OFPsi4.  We need orbital reordering
+-Automate a test suite
 
--Enable orbital localization.  OFPsi4 is awful at this
+-Automate installation
 
--Avoid the process of using psi4 executables.  Writing these instead of using the python API is ugly and inefficient
+-Introduce better control over saving more than the most recent intermediate calculations.
+
+-Automate cleanup of old files.
+
+-Spice up the log file to be more verbose and not just a data column?
+
+-Simplify orbital specification?
+
+-Remove deprecated kwargs
