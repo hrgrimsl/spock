@@ -1,8 +1,8 @@
 import sys
-
+import os
 
 def test_import():
     sys.path.append('../..')
-    pwd
+    os.system('pwd')
     from spock import core
 
