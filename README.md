@@ -50,12 +50,6 @@ scr.molden- Molden file of the molecular orbitals.  Visualize with jmol.
 
 -Automate installation
 
--Spice up the log file to be more verbose and not just a data column?
-
 -Simplify orbital specification?
 
--Remove deprecated kwargs
 
--Clean up some dead code
-
--Add enough comments that other developers might actually be able to help?
