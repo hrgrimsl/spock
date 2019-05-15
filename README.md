@@ -7,7 +7,7 @@ git clone https://github.com/hrgrimsl/spock.git
 
 Then edit ~/.bashrc to include the line
 
-export PYTHONPATH="${PYTHONPATH}:/home/hrgrimsl/spock"
+export PYTHONPATH="${PYTHONPATH}:/home/(path to)/spock"
 
 ### Windows:
 Use Linux like an adult.
