@@ -10,8 +10,8 @@ decorator==4.4.0
 deepdiff==3.3.0
 idna==2.8
 jsonpickle==0.9.6
-mkl-fft==1.0.12
-mkl-random==1.0.2
+
+
 more-itertools==4.3.0
 networkx==2.3
 numpy==1.16.3
