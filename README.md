@@ -11,7 +11,7 @@ export PYTHONPATH="${PYTHONPATH}:/home/(path to)/spock"
 
 Test by going to spock/tests and running
 
-python core_test.py
+python test_core.py
 
 See the test file for usage references.
 
