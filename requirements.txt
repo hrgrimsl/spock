@@ -90,7 +90,7 @@ scipy==1.2.1
 Send2Trash==1.5.0
 six==1.12.0
 sortedcontainers==2.1.0
--e git+ssh://github.com/hrgrimsl/spock.git@5a2189700aa191619192005d2d47967f5e6ccabd#egg=SPOCK
+
 style==1.1.0
 terminado==0.8.2
 testpath==0.4.2
