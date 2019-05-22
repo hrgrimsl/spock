@@ -1,4 +1,4 @@
-import psi4
+from psi4 import core
 import os
 import shutil
 import numpy as np
@@ -21,8 +21,10 @@ class molecule:
  'output',
  'loc',
  'occ'):
+
             if key in kwargs:
                 setattr(self, key, kwargs[key])
+
         self.get_psi_geom()
         self.molecule = openfermion.hamiltonians.MolecularData(self.geometry, self.basis, self.multiplicity, self.charge)
         self.molecule.active = self.active 
@@ -36,7 +38,8 @@ class molecule:
         self.psi_geom += 'symmetry c1'
     
     def run_psi4(self):
-        psi4.core.set_output_file(self.output+'.dat')
+        core.set_output_file(self.output+'.dat')
+        import psi4
         psi4.set_memory('1 GB') 
         psi_molecule = psi4.geometry(self.psi_geom)
         psi4.set_options({'basis': self.basis, 'molden_write': False, 'WRITER_FILE_LABEL': str(self.output)+'.dat'})
