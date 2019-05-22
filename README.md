@@ -55,7 +55,7 @@ In addition to the actual molecule object, two files will be left in your workin
 
 ## See Also:
 
-OpenFermionPsi4 - A very similar code to this which I felt was not generally appropriate for chemists, hence the design of this code.  Given their time investment and resources, their program is much nicer than this if you're not trying to do something outside of its wheelhouse.
+OpenFermionPsi4 - A very similar code to this which I felt was not generally appropriate for chemists, hence the design of this code.  Given their time investment and resources, their program is much nicer than this if you're not trying to do something outside of its wheelhouse.  Some basic syntax borrowed from them.  (e.g. assignments of variables.)
 
 OpenFermion - I don't know why you're using this if you don't know what OpenFermion is.
 
