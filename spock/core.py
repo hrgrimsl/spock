@@ -83,6 +83,10 @@ class molecule:
             self.fci_energy = self.CASCI
             self.molecule.fci_energy = self.CASCI
         else:
+            self.CASCI = psi4.energy('fci', ref_wfn = wfn)
+            self.molecule.CASCI = self.CASCI
+            self.fci_energy = self.CASCI
+            self.molecule.fci_energy = self.CASCI
             self.molecule.n_orbitals = len(wfn.Ca().to_array())
             psi4.molden(wfn, 'scr.molden')
         self.molecule.nuclear_repulsion = psi_molecule.nuclear_repulsion_energy()
