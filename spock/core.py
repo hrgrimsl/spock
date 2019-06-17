@@ -42,7 +42,7 @@ class molecule:
         import psi4
         psi4.set_memory('1 GB') 
         psi_molecule = psi4.geometry(self.psi_geom)
-        psi4.set_options({'basis': self.basis, 'molden_write': False, 'WRITER_FILE_LABEL': str(self.output)+'.dat'})
+        psi4.set_options({'basis': self.basis, 'molden_write': False, 'WRITER_FILE_LABEL': str(self.output)+'.dat', 'maxiter': 500, 'fail_on_maxiter': False})
         if self.multiplicity !=1:
             psi4.set_options({'reference': 'ROHF'})
 
@@ -50,7 +50,6 @@ class molecule:
         self.molecule.hf_energy = e
         if os.path.exists('./scr.molden'):
             os.system('rm scr.molden')
-
         if self.active!=None:
             cb = wfn.Cb().to_array()
             ca = wfn.Ca().to_array()
